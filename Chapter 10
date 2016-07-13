@@ -1,4 +1,4 @@
-#Chapter 10, Programming Exercise Q1,page 274
+//Chapter 10, Programming Exercise Q1,page 274
 //Using built in Array to compute average of remaining 5 number after removing the highest and lowest
 //Step:
 //#1-get 7 number in an array
@@ -76,3 +76,65 @@ public class Average extends ConsoleProgram{
 	
 }
 
+
+/*
+ * Chapter 10, Programming Exercise Q2,page 274
+ * 
+ * Goal: to create a method mean that take array of type double
+ * and return the average of all doubles in array
+ * 
+ * step:
+ * 1. create an array
+ * 2. get input and add it to array
+ * 	option1:define it in the code (do this first)
+ * 	option2:get from user enter, 
+ * 3. manipulate the input and return the average of the array
+ */
+
+import acm.program.*;
+
+
+public class Statistics extends ConsoleProgram{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	//generate an array
+	private double[] array = new double[NUMBER_OF_ELEMENTS];
+	private static final int NUMBER_OF_ELEMENTS = 5;
+	
+	public void run(){
+		
+		println("In order to obtain the mean of the array, please enter "+NUMBER_OF_ELEMENTS+" values below.");
+		
+		/*option 1: manual input
+		 * 
+		array[0]=100.00;
+		array[1]=100.00;
+		array[2]=0.00;
+		array[3]=0.00;
+		*/
+		
+		/*option 2: user input
+		 */
+		for(int i=0;i<array.length;i++){
+			array[i]=readDouble("Enter the "+(i+1)+" value:");
+		}
+		
+		//calculate the mean
+		println(mean(array));
+		
+	}
+	
+	//method that take array input and return an average of the array as an output
+	private double mean(double[] arr){
+		double sum=0.0;
+		
+		for(int i=0;i<arr.length;i++){
+			sum += arr[i];
+		}
+		return sum/arr.length;
+	}
+}
