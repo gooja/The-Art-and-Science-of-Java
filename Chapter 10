@@ -1,1 +1,78 @@
+#Chapter 10, Programming Exercise Q1,page 274
+//Using built in Array to compute average of remaining 5 number after removing the highest and lowest
+//Step:
+//#1-get 7 number in an array
+//#2-get the minimum number in array
+//#3-get the maximum number in array
+//#4-get the average number in array after minus the maximum and minimum of number of the array
+
+import acm.program.*;
+public class Average extends ConsoleProgram{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private static final int N_JUDGE = 7;
+	
+	//method that read the input array
+	private void readArray(double[] array){
+		for(int i=0;i<array.length;i++){
+			array[i]=readDouble("Enter the score:" );
+		}
+	}
+	//method that print the array, this method is not used.
+	
+	/*private void printArray(double[] array){
+		for(int i=0;i<array.length;i++){
+			println(array[i]);
+	}
+	}*/
+	//method to get maximum double from an array
+	private double getMax(double[] array){
+		double max=0;
+		for(int i=0;i<array.length;i++){
+			if(i==0){
+				max = array[i];
+			}
+			if(i>0&&(array[i]>max)){
+				max = array[i];
+			}	
+		}
+		return max;
+	}
+	//method to get minimum double from an array, this is used in the getAve method
+	private double getMin(double[] array){
+		double min=0;
+		for(int i=0;i<array.length;i++){
+			if(i==0){
+				min = array[i];
+			}
+			if(i>0&&(array[i]<min)){
+				min = array[i];
+			}
+		}
+		return min;
+	}
+	//method to get the average value from an array after removing the maximum and minimum from the array
+	private double getAve(double[] array){
+		double ave=0;
+		for(int i=0;i<array.length;i++){
+			ave += array[i];
+		}
+		return(ave-getMax(array)-getMin(array))/N_JUDGE;
+	
+	}
+	
+	//test program for getAve method to work
+	public void run(){
+		double [] array1 = new double [N_JUDGE];
+		readArray(array1);
+		println(getMin(array1));
+		println(getMax(array1));
+		println(getAve(array1));
+	}
+	
+}
 
