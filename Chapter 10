@@ -77,6 +77,13 @@ public class Average extends ConsoleProgram{
 }
 
 
+
+
+
+
+
+
+
 /*
  * Chapter 10, Programming Exercise Q2,page 274
  * 
@@ -138,3 +145,91 @@ public class Statistics extends ConsoleProgram{
 		return sum/arr.length;
 	}
 }
+
+
+
+
+
+
+
+
+
+/*Chapter 10, Programming Exercise Q4,page 274
+ *Goal: Find all the prime number up to a upper limit N 
+ *Step:
+ *1. generate a arrayList
+ *2. run a mehtod to find all the prime number in the arrayList
+ *	2.1 run through the first array by using the first element of the array, put elements that satisfy 
+ *	2.2 create a for loop to generate new array and 
+ *3. show the new array with only prime numbers by printing out the element of array
+ *
+ *
+ *Note: 
+ * #1. In Java, the array or ArrayList can not be print like a list. A for loop is normally constructed to print out all the elements of the array/ArrayList.
+ * #2. when one element is removed from ArrayList, the position will instantly changed due to the removal of one element.
+ * e.g. [1,2,3,4], value 3 is in position 2, one 3 is removed, the list will become [1,2,4] and now value 4 is in position 4. need to be careful when we loop through the list, 
+ * there could be value miss counting in the list due to change of the position.
+
+ */
+import java.util.ArrayList;
+import acm.program.*;
+public class Math extends ConsoleProgram{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private ArrayList<Integer> arrList = new ArrayList<Integer>();
+	
+	private ArrayList<Integer> ListOfPrime(ArrayList<Integer> arr){
+		for (int i=0;i<arr.size();i++){
+			 
+			Integer denominator = arr.get(i);
+			for(int j=0;j<arr.size();j++){
+				//if(i==0){println(j);}
+				if(arr.get(j)/denominator!=1&&arr.get(j)%denominator==0){
+					arr.remove(j);
+					j--;
+				}
+				//if(i==0){println(arr.size());}
+			}
+			//println(arrList.size());
+		}
+		return arr;
+	}
+	
+	public void run(){
+		//This ask for the Upper Limit of the ArrayList
+		int UPPER_LIMIT = readInt("Enter the Upper Limit for the list: ");
+		
+		for(int i=2;i<=UPPER_LIMIT;i++){
+			arrList.add(i);
+		}
+
+		//This shows the initial ArrayList
+		//"\r" is added to print the number on the same line
+		println("The initial ArrayList is shown below:");
+		for(int i=0;i<arrList.size();i++){
+			print(arrList.get(i)+" \r");
+		}
+		
+		ListOfPrime(arrList);
+		
+		//This Shows the ArrayList with only prime number
+		//"\r" is added to print the number on the same line
+		//\n is added so that the first line is print on a new line
+		println("\nThe ArrayList with only prime number is shown below:");
+		for(int i=0;i<arrList.size();i++){
+			print(arrList.get(i)+" \r");
+		}
+	}
+}
+	
+	
+	
+	
+	
+	
+	
+
